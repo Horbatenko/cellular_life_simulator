@@ -1,15 +1,14 @@
-
 import pygame
-from pygame import image
 import os
 import random
+
 
 class Cell:
 
     def __init__(self, position, size, state=False):
         self.state = bool(state)
         sprites = os.listdir('./sprites')
-        self.image = image.load('./sprites/' + random.choice(sprites))
+        self.image = pygame.image.load('./sprites/' + random.choice(sprites))
         self.image = pygame.transform.scale(self.image, (int(size), int(size)))
         self.position = {'x': position['x'], 'y': position['y']}
 

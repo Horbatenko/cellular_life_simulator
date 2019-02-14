@@ -14,7 +14,6 @@ class Field:
                 row.append(Cell.Cell({'x': i, 'y': j}, cellSize))
             self.cells.append(row)
 
-
         self.fillFieldRandomStates()
 
     def fillFieldRandomStates(self):

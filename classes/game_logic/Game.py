@@ -1,8 +1,8 @@
 from classes.game_logic import Field
 from classes import Graphics as G
 import pygame
-from pygame import *
 from settings import START_PAUSE_TIME, PAUSE_TIME_DELTA
+
 
 class Game:
 
@@ -42,13 +42,10 @@ class Game:
                 self.calculateGenerations(nowField, nextField)
                 self.state = not self.state
 
-
     def calculateGenerations(self, nowField, nextField):
         for row in nextField.cells:
             for cell in row:
                 cell.state = nowField.cells[cell.position['x']][cell.position['y']].calculateState(nowField)
-
-
 
     def showFieldConsole(self):
         if self.state:

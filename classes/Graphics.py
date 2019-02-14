@@ -1,6 +1,6 @@
 import pygame
-from pygame import *
 from settings import *
+
 
 class Grafics:
 
@@ -16,19 +16,17 @@ class Grafics:
         self.screen = pygame.display.set_mode(SCREEN_SIZE)
         pygame.display.set_caption("John Conway's Game of Life")
 
-        self.bg = Surface((SCREEN_WIDTH, SCREEN_HEIGHT))
-        self.bg.fill(Color("#ffffff"))
+        self.bg = pygame.Surface((SCREEN_WIDTH, SCREEN_HEIGHT))
+        self.bg.fill(pygame.Color("#ffffff"))
 
-
-        self.field = Surface((CELLS_FIELD_WIDTH, CELLS_FIELD_HEIGHT))
-        self.field.fill(Color("#f7f7f7"))
-
+        self.field = pygame.Surface((CELLS_FIELD_WIDTH, CELLS_FIELD_HEIGHT))
+        self.field.fill(pygame.Color("#f7f7f7"))
 
     def handleEvents(self):
         for e in pygame.event.get():
-            if e.type == QUIT:
+            if e.type == pygame.QUIT:
                 exit()
-            elif e.type == KEYDOWN:
+            elif e.type == pygame.KEYDOWN:
                 if e.key == 32:#space
                     return 'pause'
                 elif e.key == 275:#arrow right
@@ -40,11 +38,8 @@ class Grafics:
                 elif e.key == 13:
                     return 'new'
 
-
-
-
     def reDraw(self, cells):
-        self.field.fill(Color('#f7f7f7'))
+        self.field.fill(pygame.Color('#f7f7f7'))
         y = 0
         for row in cells:
             x = 0
@@ -52,7 +47,7 @@ class Grafics:
                 if cell.state:
                     self.field.blit(cell.image, (x, y))
                 else:
-                    pygame.draw.rect(self.field, Color("#f7f7f7"), pygame.Rect(x, y, self.cellSize, self.cellSize))
+                    pygame.draw.rect(self.field, pygame.Color("#f7f7f7"), pygame.Rect(x, y, self.cellSize, self.cellSize))
                 x += self.cellSize
             y += self.cellSize
 
