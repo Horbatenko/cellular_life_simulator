@@ -9,5 +9,6 @@ def main():
     game = Game.Game(h, w)
     game.run()
 
+
 if __name__ == '__main__':
     main()
